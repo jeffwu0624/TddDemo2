@@ -163,10 +163,10 @@ namespace WebApplication1
         {
             throw new NotImplementedException();
         }
-
+        
         public string GetCompanyName()
         {
-            throw new NotImplementedException();
+            return "黑貓";
         }
 
         public double GetFee()

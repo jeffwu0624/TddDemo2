@@ -6,15 +6,13 @@ namespace WebApplication1.UnitTests
     public class BlackCatTests
     {
         [Test()]
-        public void CalculatedTest()
+        public void GetCompanyName_Test()
         {
-            Assert.Fail();
-        }
+            var blackCat = new BlackCat();
 
-        [Test()]
-        public void GetCompanyNameTest()
-        {
-            Assert.Fail();
+            var companyName = blackCat.GetCompanyName();
+
+            Assert.That(companyName, Is.EqualTo("黑貓"));
         }
 
         [Test()]
