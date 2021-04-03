@@ -160,6 +160,7 @@ namespace WebApplication1
     public class BlackCat
     {
         private readonly string _companyName = "黑貓";
+        private double _fee = 0d;
 
         public void Calculated()
         {
@@ -173,7 +174,7 @@ namespace WebApplication1
 
         public double GetFee()
         {
-            throw new NotImplementedException();
+            return _fee;
         }
 
         public Product ShipProduct { get; set; }

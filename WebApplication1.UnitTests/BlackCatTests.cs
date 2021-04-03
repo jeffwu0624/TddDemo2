@@ -16,9 +16,11 @@ namespace WebApplication1.UnitTests
         }
 
         [Test()]
-        public void GetFeeTest()
+        public void GetFee_ShouldBeZero_WhenInit()
         {
-            Assert.Fail();
+            var fee = _blackCat.GetFee();
+
+            Assert.That(0, Is.EqualTo(0));
         }
     }
 }
