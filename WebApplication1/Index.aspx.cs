@@ -17,7 +17,13 @@ namespace WebApplication1
 
                 if ("1".Equals(ddlLogistics.SelectedValue))
                 {
-                    CalculatedByBlackCat();
+                    //CalculatedByBlackCat();
+
+                    var blackCat = new BlackCat() {ShipProduct = product};
+                    blackCat.Calculated();
+
+                    var companyName = blackCat.GetCompanyName();
+                    var fee = blackCat.GetFee();
                 }
                 else if ("2".Equals(ddlLogistics.SelectedValue))
                 {
@@ -100,6 +106,26 @@ namespace WebApplication1
                 Height = Convert.ToDouble(txtHeight.Text),
             };
         }
+    }
+
+    public class BlackCat
+    {
+        public void Calculated()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetCompanyName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetFee()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product ShipProduct { get; set; }
     }
 
     public class Product
