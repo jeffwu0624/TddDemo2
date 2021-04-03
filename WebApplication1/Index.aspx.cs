@@ -37,7 +37,12 @@ namespace WebApplication1
                 }
                 else if ("3".Equals(ddlLogistics.SelectedValue))
                 {
-                    CalculatedByPostOffice();
+                    //CalculatedByPostOffice();
+                    var postOffice = new PostOffice();
+                    postOffice.Calculated();
+
+                    var companyName = postOffice.GetCompanyName();
+                    var fee = postOffice.GetFee();
                 }
             }
         }
@@ -111,6 +116,24 @@ namespace WebApplication1
                 Width = Convert.ToDouble(txtWidth.Text),
                 Height = Convert.ToDouble(txtHeight.Text),
             };
+        }
+    }
+
+    public class PostOffice
+    {
+        public void Calculated()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetCompanyName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public double GetFee()
+        {
+            throw new NotImplementedException();
         }
     }
 
