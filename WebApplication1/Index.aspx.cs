@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
@@ -22,7 +17,7 @@ namespace WebApplication1
 
                 if ("1".Equals(ddlLogistics.SelectedValue))
                 {
-                    CalcluatedByBlackCat();
+                    CalculatedByBlackCat();
                 }
                 else if ("2".Equals(ddlLogistics.SelectedValue))
                 {
@@ -79,7 +74,7 @@ namespace WebApplication1
             }
         }
 
-        private void CalcluatedByBlackCat()
+        private void CalculatedByBlackCat()
         {
             lblLogistics.Text = ddlLogistics.SelectedItem.Text;
 
