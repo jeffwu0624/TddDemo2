@@ -18,6 +18,8 @@ namespace WebApplication1
         {
             if (IsValid)
             {
+                var product = CreateProduct();
+
                 if ("1".Equals(ddlLogistics.SelectedValue))
                 {
                     lblLogistics.Text = ddlLogistics.SelectedItem.Text;
@@ -77,5 +79,24 @@ namespace WebApplication1
                 }
             }
         }
+
+        private Product CreateProduct()
+        {
+            return new Product()
+            {
+                Weight = Convert.ToDouble(txtWeight.Text),
+                Length = Convert.ToDouble(txtLength.Text),
+                Width = Convert.ToDouble(txtWidth.Text),
+                Height = Convert.ToDouble(txtHeight.Text),
+            };
+        }
+    }
+
+    public class Product
+    {
+        public double Weight { get; set; }
+        public double Length { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
     }
 }
