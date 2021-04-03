@@ -5,12 +5,12 @@ namespace WebApplication1.UnitTests
     [TestFixture()]
     public class BlackCatTests
     {
+        private readonly BlackCat _blackCat = new BlackCat();
+
         [Test()]
         public void GetCompanyName_Test()
         {
-            var blackCat = new BlackCat();
-
-            var companyName = blackCat.GetCompanyName();
+            var companyName = _blackCat.GetCompanyName();
 
             Assert.That(companyName, Is.EqualTo("黑貓"));
         }
