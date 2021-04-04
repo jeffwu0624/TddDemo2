@@ -22,5 +22,25 @@ namespace WebApplication1.UnitTests
 
             Assert.That(0, Is.EqualTo(0));
         }
+
+        [Test]
+        public void GetFee_ShouldBe500_WhenWeightMoreThen20()
+        {
+            _blackCat.ShipProduct = new Product()
+            {
+                Weight = 21
+            };
+
+            FeeShouldBe(500d);
+        }
+
+        private void FeeShouldBe(double expected)
+        {
+            _blackCat.Calculated();
+
+            var fee = _blackCat.GetFee();
+
+            Assert.That(fee, Is.EqualTo(expected));
+        }
     }
 }

@@ -164,7 +164,29 @@ namespace WebApplication1
 
         public void Calculated()
         {
-            throw new NotImplementedException();
+            //lblLogistics.Text = ddlLogistics.SelectedItem.Text;
+
+            //var weight = Convert.ToDouble(txtWeight.Text);
+
+            //if (weight > 20)
+            //{
+            //    lblFee.Text = 500.ToString("C");
+            //}
+            //else
+            //{
+            //    lblFee.Text = (100 + weight * 10).ToString("C");
+            //}
+
+            var weight = ShipProduct.Weight;
+
+            if (weight > 20)
+            {
+                _fee = 500;
+            }
+            else
+            {
+                _fee = (100 + weight * 10);
+            }
         }
         
         public string GetCompanyName()
