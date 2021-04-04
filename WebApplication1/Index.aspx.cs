@@ -15,6 +15,9 @@ namespace WebApplication1
             {
                 var product = CreateProduct();
 
+                var companyName = "";
+                var fee = 0d;
+
                 if ("1".Equals(ddlLogistics.SelectedValue))
                 {
                     //CalculatedByBlackCat();
@@ -22,8 +25,8 @@ namespace WebApplication1
                     var blackCat = new BlackCat() {ShipProduct = product};
                     blackCat.Calculated();
 
-                    var companyName = blackCat.GetCompanyName();
-                    var fee = blackCat.GetFee();
+                    companyName = blackCat.GetCompanyName();
+                    fee = blackCat.GetFee();
                 }
                 else if ("2".Equals(ddlLogistics.SelectedValue))
                 {
@@ -32,8 +35,8 @@ namespace WebApplication1
                     var hsinchu = new Hsinchu() { ShipProduct = product};
                     hsinchu.Calculated();
 
-                    var companyName = hsinchu.GetCompanyName();
-                    var fee = hsinchu.GetFee();
+                    companyName = hsinchu.GetCompanyName();
+                    fee = hsinchu.GetFee();
                 }
                 else if ("3".Equals(ddlLogistics.SelectedValue))
                 {
@@ -41,9 +44,12 @@ namespace WebApplication1
                     var postOffice = new PostOffice();
                     postOffice.Calculated();
 
-                    var companyName = postOffice.GetCompanyName();
-                    var fee = postOffice.GetFee();
+                    companyName = postOffice.GetCompanyName();
+                    fee = postOffice.GetFee();
                 }
+
+                lblLogistics.Text = companyName;
+                lblFee.Text = fee.ToString("C");
             }
         }
 
