@@ -34,6 +34,17 @@ namespace WebApplication1.UnitTests
             FeeShouldBe(500d);
         }
 
+        [Test]
+        public void GetFee_ShouldBe300_WhenWeightEqual20()
+        {
+            _blackCat.ShipProduct = new Product()
+            {
+                Weight = 20
+            };
+
+            FeeShouldBe(300d);
+        }
+
         private void FeeShouldBe(double expected)
         {
             _blackCat.Calculated();
