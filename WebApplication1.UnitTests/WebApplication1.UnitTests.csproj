@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="BlackCatTests.cs" />
     <Compile Include="HsinchuTests.cs" />
+    <Compile Include="PostOfficeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

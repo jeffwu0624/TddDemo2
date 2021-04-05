@@ -23,7 +23,7 @@ namespace WebApplication1
                 {
                     //CalculatedByBlackCat();
 
-                    var blackCat = new BlackCat() {ShipProduct = product};
+                    var blackCat = new BlackCat() { ShipProduct = product };
                     blackCat.Calculated();
 
                     companyName = blackCat.GetCompanyName();
@@ -33,7 +33,7 @@ namespace WebApplication1
                 {
                     //CalculateHsinchu();
 
-                    var hsinchu = new Hsinchu() { ShipProduct = product};
+                    var hsinchu = new Hsinchu() { ShipProduct = product };
                     hsinchu.Calculated();
 
                     companyName = hsinchu.GetCompanyName();
@@ -42,7 +42,7 @@ namespace WebApplication1
                 else if ("3".Equals(ddlLogistics.SelectedValue))
                 {
                     //CalculatedByPostOffice();
-                    var postOffice = new PostOffice();
+                    var postOffice = new PostOffice() { ShipProduct = product };
                     postOffice.Calculated();
 
                     companyName = postOffice.GetCompanyName();
@@ -128,19 +128,61 @@ namespace WebApplication1
 
     public class PostOffice
     {
+        private readonly string _companyName = "郵局";
+        private double _fee = 0;
+        public Product ShipProduct { get; set; }
+
         public void Calculated()
         {
-            throw new NotImplementedException();
+            //lblLogistics.Text = ddlLogistics.SelectedItem.Text;
+
+            //var weight = Convert.ToDouble(txtWeight.Text);
+            //var feeByWeight = 80 + (weight * 10);
+
+            //var width = Convert.ToDouble(txtWidth.Text);
+            //var length = Convert.ToDouble(txtLength.Text);
+            //var height = Convert.ToDouble(txtHeight.Text);
+
+            //var size = width * length * height;
+            //var feeBySize = size * 0.0000353 * 1100;
+
+            //if (feeByWeight < feeBySize)
+            //{
+            //    lblFee.Text = feeByWeight.ToString("C");
+            //}
+            //else
+            //{
+            //    lblFee.Text = feeBySize.ToString("C");
+            //}
+
+            var weight = ShipProduct.Weight;;
+            var feeByWeight = 80 + (weight * 10);
+
+            var width = ShipProduct.Width;
+            var length= ShipProduct.Length;
+            var height = ShipProduct.Height;
+
+            var size = width * length * height;
+            var feeBySize = size * 0.0000353 * 1100;
+
+            if (feeByWeight < feeBySize)
+            {
+                _fee = feeByWeight;
+            }
+            else
+            {
+                _fee = feeBySize;
+            }
         }
 
         public string GetCompanyName()
         {
-            throw new NotImplementedException();
+            return _companyName;
         }
 
         public double GetFee()
         {
-            throw new NotImplementedException();
+            return _fee;
         }
     }
 
@@ -228,7 +270,7 @@ namespace WebApplication1
                 _fee = (100 + weight * 10);
             }
         }
-        
+
         public string GetCompanyName()
         {
             return _companyName;
