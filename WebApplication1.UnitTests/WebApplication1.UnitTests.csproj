@@ -58,6 +58,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BlackCatTests.cs" />
+    <Compile Include="HsinchuTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
