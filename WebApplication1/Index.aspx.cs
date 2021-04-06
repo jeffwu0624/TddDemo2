@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 
 namespace WebApplication1
 {
@@ -11,21 +10,16 @@ namespace WebApplication1
 
             if ("1".Equals(logisticsSelectedValue))
             {
-                //CalculatedByBlackCat();
-
                 result = new BlackCat() {ShipProduct = product};
                 result.Calculated();
             }
             else if ("2".Equals(logisticsSelectedValue))
             {
-                //CalculateHsinchu();
-
                 result = new Hsinchu() {ShipProduct = product};
                 result.Calculated();
             }
             else if ("3".Equals(logisticsSelectedValue))
             {
-                //CalculatedByPostOffice();
                 result = new PostOffice() {ShipProduct = product};
                 result.Calculated();
             }
@@ -54,66 +48,6 @@ namespace WebApplication1
                 lblLogistics.Text = logistics.GetCompanyName();
 
                 lblFee.Text = logistics.GetFee().ToString("C");
-            }
-        }
-
-        private void CalculatedByPostOffice()
-        {
-            lblLogistics.Text = ddlLogistics.SelectedItem.Text;
-
-            var weight = Convert.ToDouble(txtWeight.Text);
-            var feeByWeight = 80 + (weight * 10);
-
-            var width = Convert.ToDouble(txtWidth.Text);
-            var length = Convert.ToDouble(txtLength.Text);
-            var height = Convert.ToDouble(txtHeight.Text);
-
-            var size = width * length * height;
-            var feeBySize = size * 0.0000353 * 1100;
-
-            if (feeByWeight < feeBySize)
-            {
-                lblFee.Text = feeByWeight.ToString("C");
-            }
-            else
-            {
-                lblFee.Text = feeBySize.ToString("C");
-            }
-        }
-
-        private void CalculateHsinchu()
-        {
-            lblLogistics.Text = ddlLogistics.SelectedItem.Text;
-
-            var width = Convert.ToDouble(txtWidth.Text);
-            var length = Convert.ToDouble(txtLength.Text);
-            var height = Convert.ToDouble(txtHeight.Text);
-
-            var size = (width * length * height);
-
-            if (length > 100 || width > 100 || height > 100)
-            {
-                lblFee.Text = (size * 0.0000353 * 1100 + 500).ToString("C");
-            }
-            else
-            {
-                lblFee.Text = (size * 0.0000353 * 1200).ToString("C");
-            }
-        }
-
-        private void CalculatedByBlackCat()
-        {
-            lblLogistics.Text = ddlLogistics.SelectedItem.Text;
-
-            var weight = Convert.ToDouble(txtWeight.Text);
-
-            if (weight > 20)
-            {
-                lblFee.Text = 500.ToString("C");
-            }
-            else
-            {
-                lblFee.Text = (100 + weight * 10).ToString("C");
             }
         }
 
