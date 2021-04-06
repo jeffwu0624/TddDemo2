@@ -3,8 +3,41 @@ using System.Runtime.InteropServices;
 
 namespace WebApplication1
 {
+    public class LogisticsFactory
+    {
+        public ILogistics GetLogistics(Product product, string logisticsSelectedValue)
+        {
+            ILogistics result = null;
+
+            if ("1".Equals(logisticsSelectedValue))
+            {
+                //CalculatedByBlackCat();
+
+                result = new BlackCat() {ShipProduct = product};
+                result.Calculated();
+            }
+            else if ("2".Equals(logisticsSelectedValue))
+            {
+                //CalculateHsinchu();
+
+                result = new Hsinchu() {ShipProduct = product};
+                result.Calculated();
+            }
+            else if ("3".Equals(logisticsSelectedValue))
+            {
+                //CalculatedByPostOffice();
+                result = new PostOffice() {ShipProduct = product};
+                result.Calculated();
+            }
+
+            return result;
+        }
+    }
+
     public partial class Index : System.Web.UI.Page
     {
+        private readonly LogisticsFactory _logisticsFactory = new LogisticsFactory();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,41 +49,11 @@ namespace WebApplication1
             {
                 var product = CreateProduct();
 
-                var companyName = "";
-                var fee = 0d;
+                var logistics = _logisticsFactory.GetLogistics(product, ddlLogistics.SelectedValue);
 
-                if ("1".Equals(ddlLogistics.SelectedValue))
-                {
-                    //CalculatedByBlackCat();
+                lblLogistics.Text = logistics.GetCompanyName();
 
-                    var blackCat = new BlackCat() { ShipProduct = product };
-                    blackCat.Calculated();
-
-                    companyName = blackCat.GetCompanyName();
-                    fee = blackCat.GetFee();
-                }
-                else if ("2".Equals(ddlLogistics.SelectedValue))
-                {
-                    //CalculateHsinchu();
-
-                    var hsinchu = new Hsinchu() { ShipProduct = product };
-                    hsinchu.Calculated();
-
-                    companyName = hsinchu.GetCompanyName();
-                    fee = hsinchu.GetFee();
-                }
-                else if ("3".Equals(ddlLogistics.SelectedValue))
-                {
-                    //CalculatedByPostOffice();
-                    var postOffice = new PostOffice() { ShipProduct = product };
-                    postOffice.Calculated();
-
-                    companyName = postOffice.GetCompanyName();
-                    fee = postOffice.GetFee();
-                }
-
-                lblLogistics.Text = companyName;
-                lblFee.Text = fee.ToString("C");
+                lblFee.Text = logistics.GetFee().ToString("C");
             }
         }
 
