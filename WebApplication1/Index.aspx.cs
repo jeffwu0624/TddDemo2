@@ -126,7 +126,7 @@ namespace WebApplication1
         }
     }
 
-    public class PostOffice
+    public class PostOffice : ILogistics
     {
         private readonly string _companyName = "郵局";
         private double _fee = 0;
@@ -155,11 +155,11 @@ namespace WebApplication1
             //    lblFee.Text = feeBySize.ToString("C");
             //}
 
-            var weight = ShipProduct.Weight;;
+            var weight = ShipProduct.Weight; ;
             var feeByWeight = 80 + (weight * 10);
 
             var width = ShipProduct.Width;
-            var length= ShipProduct.Length;
+            var length = ShipProduct.Length;
             var height = ShipProduct.Height;
 
             var size = width * length * height;
@@ -186,7 +186,7 @@ namespace WebApplication1
         }
     }
 
-    public class Hsinchu
+    public class Hsinchu : ILogistics
     {
         private readonly string _companyName = "新竹貨運";
         private double _fee = 0;
@@ -239,7 +239,15 @@ namespace WebApplication1
         }
     }
 
-    public class BlackCat
+    public interface ILogistics
+    {
+        void Calculated();
+        string GetCompanyName();
+        double GetFee();
+        Product ShipProduct { get; set; }
+    }
+
+    public class BlackCat : ILogistics
     {
         private readonly string _companyName = "黑貓";
         private double _fee = 0d;
